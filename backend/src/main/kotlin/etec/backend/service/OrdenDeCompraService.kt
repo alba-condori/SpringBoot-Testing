@@ -1,6 +1,7 @@
 package etec.backend.service
 
-data class Item(val nombre: String, val precio: Int)
+import etec.backend.model.Item
+
 class OrdenDeCompra() {
     val items = mutableListOf<Item>()
     fun agregarItem(item: Item) {

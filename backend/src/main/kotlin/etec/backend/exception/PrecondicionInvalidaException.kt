@@ -1,3 +1,3 @@
-package etec.backend.service
+package etec.backend.exception
 
 class PrecondicionInvalidaException(mensaje: String) : RuntimeException(mensaje)

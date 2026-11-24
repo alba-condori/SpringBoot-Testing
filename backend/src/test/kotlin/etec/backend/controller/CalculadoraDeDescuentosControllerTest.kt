@@ -9,7 +9,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
-import etec.backend.service.PrecondicionInvalidaException
+import etec.backend.exception.PrecondicionInvalidaException
 
 // 1. @WebMvcTest SOLO levanta la capa web (rutas, JSON, HTTP).
 // No inicia el contexto completo de Spring Boot ni levanta repositorios ni servicios reales.
