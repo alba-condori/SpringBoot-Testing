@@ -12,14 +12,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 @AutoConfigureMockMvc // 2. Configura e inyecta el cliente MockMvc para llamadas HTTP
 class CalculadoraDeDescuentosIntegrationTest(
     private val navegador: MockMvc
+    // inyecta navegador (MockMvc) para simular peticiones HTTP
     // 3. ¡Eliminado el @MockkBean! Ahora se ejecuta la lógica real de CalculadoraDeDescuentos
 ) : BehaviorSpec({
 
     Given("la aplicación cargada completamente con sus servicios reales") {
 
         And("un usuario '123' configurado en el sistema con 25% de descuento") {
-            // NOTA: Ya no hay 'every'. Confiamos en los datos reales
-            // o pre-cargados (por ejemplo, mediante un script de base de datos H2 o Setup)
+            // NOTA: Ya no hay 'every'. Confiamos en los datos reales o pre-cargados
 
             When("se hace una consulta GET /api/descuentos?userID=123&monto=100.0") {
                 val respuesta =
@@ -34,7 +34,9 @@ class CalculadoraDeDescuentosIntegrationTest(
                 }
 
                 And("el monto final devuelto por la lógica real debe ser de 75.0") {
-                    respuesta.andExpect(jsonPath("$.montoFinal").value(75.0))
+                    respuesta.andExpect(
+                        jsonPath("$.montoFinal").value(75.0)
+                    )
                 }
             }
         }
